@@ -1,0 +1,88 @@
+package KarmasikSayi;
+
+public class KarmasikSayi {
+	
+	int gercek,sanal;
+		
+	public KarmasikSayi() {
+		
+	}
+	
+	public KarmasikSayi(int g, int s) {
+		this.gercek = g;
+		this.sanal = s;
+	}
+	
+  /* Topla fonksiyonları overloading yapılarak opsiyonel olarak "karmasıkSayi.topla(s1,s2)" istenirse de "s1.topla(s2)" şeklinde 
+  işleme tabi tutulabilir. Aynı işlem diğer fonksiyonlar için de geçerlidir1. */
+  
+  public void topla(KarmasikSayi s1, KarmasikSayi s2, KarmasikSayi s3) {
+		int sonG = s1.gercek+s2.gercek+s3.gercek;
+		int sonS = s1.sanal+s2.sanal+s3.gercek;
+		this.yazdir(sonG, sonS);
+	}
+	
+	public void topla(KarmasikSayi s1, KarmasikSayi s2) {
+		int sonG = s1.gercek+s2.gercek;
+		int sonS = s1.sanal+s2.sanal;
+		this.yazdir(sonG, sonS);
+	}
+	
+	public void topla(KarmasikSayi s1) {
+		int sonG = s1.gercek+this.gercek;
+		int sonS = s1.sanal+this.sanal;
+		this.yazdir(sonG, sonS);
+	}
+	
+	public void cikar(KarmasikSayi s1, KarmasikSayi s2) {
+		int sonG = s1.gercek-s2.gercek;
+		int sonS = s1.sanal-s2.sanal;
+		this.yazdir(sonG, sonS);
+	}
+	
+	public void cikar(KarmasikSayi s1) {
+		int sonG = this.gercek-s1.gercek;
+		int sonS = this.sanal-s1.sanal;
+		this.yazdir(sonG, sonS);
+	}
+	
+	public void carp(KarmasikSayi s1, KarmasikSayi s2) {
+		int sonG = (s1.gercek * s2.gercek) + ((s1.sanal * s2.sanal)*(-1));
+		int sonS = (s1.gercek * s2.sanal) + (s1.sanal * s2.gercek);
+		yazdir(sonG,sonS);
+	}
+	
+	public void carp(KarmasikSayi s2) {
+		int sonG = (this.gercek * s2.gercek) + ((this.sanal * s2.sanal)*(-1));
+		int sonS = (this.gercek * s2.sanal) + (this.sanal * s2.gercek);
+		yazdir(sonG,sonS);
+	}
+	
+	public void bol(KarmasikSayi s1, KarmasikSayi s2) {
+		int eslenikTempG = s2.gercek;
+		int eslenikTempS = s2.sanal;
+		
+		int payda = s2.gercek*eslenikTempG + s2.sanal*eslenikTempS; 
+		eslenikTempS *= (-1);
+		int payG = (s1.gercek * eslenikTempG) + ((s1.sanal * eslenikTempS)*(-1));
+		int payS = (s1.gercek * eslenikTempS) + (s1.sanal * eslenikTempG);
+		int sonG = payG/payda;
+		int sonS = payS/payda;
+		this.yazdir(sonG, sonS);
+		
+	}
+	
+	public void bol(KarmasikSayi s2) {
+		int eslenikTempG = s2.gercek;
+		int eslenikTempS = s2.sanal;
+		
+		int payda = s2.gercek*eslenikTempG + s2.sanal*eslenikTempS; 
+		eslenikTempS *= (-1);
+		int payG = (this.gercek * eslenikTempG) + ((this.sanal * eslenikTempS)*(-1));
+		int payS = (this.gercek * eslenikTempS) + (this.sanal * eslenikTempG);
+		int sonG = payG/payda;
+		int sonS = payS/payda;
+		this.yazdir(sonG, sonS);
+		
+	}
+}
